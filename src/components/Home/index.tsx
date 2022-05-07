@@ -5,12 +5,12 @@ import * as S from './styled'
 export const Home = () => {
   const [image, setImage] = useState(0)
   const [imagesArray, setImagesArray] = useState([])
-  console.log(imagesArray[1])
 
   function trackScrollPosition() {
     const position = window.scrollY
     const number = Math.min(Math.floor(position / 30) + 1, 128)
     setImage(number)
+    console.log(number)
   }
 
   if (typeof window !== 'undefined') {
@@ -28,12 +28,16 @@ export const Home = () => {
 
   return (
     <S.Section>
-      <S.Content
-        onScroll={trackScrollPosition}
-        style={{
-          backgroundImage: `url('${imagesArray[image]}')`
-        }}
-      />
+      {imagesArray.map((element, i) => (
+        <S.Content
+          key={i}
+          onScroll={trackScrollPosition}
+          style={{
+            backgroundImage: `url('${element}')`,
+            display: `${image != i ? 'none' : 'block'}`
+          }}
+        />
+      ))}
     </S.Section>
   )
 }

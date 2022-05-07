@@ -4,7 +4,7 @@ export const Section = styled.section`
   ${({ theme }) => css`
     position: relative;
     width: 100%;
-    height: 5000px;
+    height: 4500px;
   `}
 `
 export const Content = styled.div`
